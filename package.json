@@ -1,0 +1,25 @@
+{
+  "name": "internchallenge-petermurphy",
+  "version": "1.0.0",
+  "description": "SAP UX Engineering iXp Intern Challenge",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitmurphy/internchallenge-petermurphy.git"
+  },
+  "author": "Peter Murphy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gitmurphy/internchallenge-petermurphy/issues"
+  },
+  "homepage": "https://github.com/gitmurphy/internchallenge-petermurphy#readme",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "express": "^4.21.1"
+  }
+}
