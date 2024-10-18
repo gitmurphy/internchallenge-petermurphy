@@ -20,6 +20,7 @@
   "homepage": "https://github.com/gitmurphy/internchallenge-petermurphy#readme",
   "dependencies": {
     "csv-parser": "^3.0.0",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "uuid": "^10.0.0"
   }
 }
