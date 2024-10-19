@@ -13,8 +13,6 @@ readEmployeeData()
     console.error("Error reading employee data: ", error);
     });
 
-// req: request from client
-// res: response from server
 router.get('/', (req, res) => {
     res.send(employees);
 });
@@ -31,23 +29,23 @@ router.post('/', (req, res) => {
     const employee = req.body;
 
     if (employee.name === undefined || employee.name === "") { 
-        res.send(`Name field should not be empty.`);
+        res.status(400).send(`Name field should not be empty.`);
     }
 
-    if (!validatEmail(employee.email)) {
-        res.send(`${employee.email} is not a valid email address.`);
+    if (!validatEmail(employee.email)) { 
+        res.status(400).send(`${employee.email} is not a valid email address.`);
     }
 
     if (employee.position === undefined || employee.position === "") { 
-        res.send(`Position field should not be empty.`);
+        res.status(400).send(`Position field should not be empty.`);
     }
 
-    if (employee.salary < 0) {
-        res.send(`Salary should be a positive number.`);
+    if (employee.salary < 0) { 
+        res.status(400).send(`Salary should be a positive number.`);
     }
 
     employees.push({ ...employee, id: uuidv4() });
-    
+
     res.send(`${employee.name} has been added to the list.`);
 });
 
