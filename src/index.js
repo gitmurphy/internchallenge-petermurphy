@@ -10,6 +10,6 @@ app.use(bodyParser.json());
 
 app.use('/employees', employeeRoutes);
 
-app.get('/', (req, res) => res.send('HELLO FROM HOMEPAGE'))
+app.get('/', (req, res) => res.send('Root get route'));
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
