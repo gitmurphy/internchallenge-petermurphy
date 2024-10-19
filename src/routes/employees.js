@@ -17,7 +17,7 @@ readEmployeeData()
 // res: response from server
 router.get('/', (req, res) => {
     res.send(employees);
-})
+});
 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
@@ -28,27 +28,40 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    // Take employee data from body of POST request
     const employee = req.body;
 
-    // Add employee with uniquely generated id to employees array
+    if (employee.name === undefined || employee.name === "") { 
+        res.send(`Name field should not be empty.`);
+    }
+
+    if (!validatEmail(employee.email)) {
+        res.send(`${employee.email} is not a valid email address.`);
+    }
+
+    if (employee.position === undefined || employee.position === "") { 
+        res.send(`Position field should not be empty.`);
+    }
+
+    if (employee.salary < 0) {
+        res.send(`Salary should be a positive number.`);
+    }
+
     employees.push({ ...employee, id: uuidv4() });
     
-    // Send response back to client
-    res.send(`${employee.name} has been added to the Array.`);
-})
+    res.send(`${employee.name} has been added to the list.`);
+});
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
   
     employees = employees.filter((employee) => employee.id !== id)
   
-    res.send(`${id} deleted successfully from database`);
-  });
+    res.send(`${id} deleted successfully from list.`);
+});
 
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
-  
+
     const { name, email, position, salary} = req.body;
   
     const employee = employees.find((employee) => employee.id === id)
@@ -58,7 +71,12 @@ router.patch('/:id', (req, res) => {
     if(position) employee.position = position;
     if(salary) employee.salary = salary;
   
-    res.send(`Employee with the id ${id} has been updated`)
-  });
+    res.send(`Employee with the id ${id} has been updated.`)
+});
+
+function validatEmail(email) {
+    const regex = new RegExp('^[^\s@]+@[^\s@]+\.[^\s@]+$');
+    return regex.test(email);
+}
 
 export default router
