@@ -40,8 +40,8 @@ npm test
 ## API Endpoints
 Use a tool like Postman or curl to test the REST API endpoints.
 
-GET /employees - Retrieve a list of all employees
-GET /employees/:id - Retrieve an employee by ID
-POST /employees - Create a new employee
-PUT /employees/:id - Update an existing employee
-DELETE /employees/:id - Delete an employee
+- GET /employees - Retrieve a list of all employees
+- GET /employees/:id - Retrieve an employee by ID
+- POST /employees - Create a new employee
+- PATCH /employees/:id - Update an existing employee
+- DELETE /employees/:id - Delete an employee
