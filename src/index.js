@@ -8,6 +8,7 @@ const PORT = 5000;
 
 app.use(bodyParser.json());
 
+// use employeeRoutes for every request to the /employees path
 app.use('/employees', employeeRoutes);
 
 app.get('/', (req, res) => res.send('Root get route'));
