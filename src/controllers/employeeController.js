@@ -3,13 +3,14 @@ import { isEmpty, isPositive, isValidEmail } from '../services/validationService
 import { v4 as uuidv4 } from 'uuid';
 
 let employees = [];
+export { employees };
 
-readEmployeeData().then(data => { employees = data;
+readEmployeeData().then(data => { employees.push(...data);
     }).catch(error => { console.error("Error reading employee data: ", error);});
 
 export async function findAll(req, res) {
     try {
-        res.send(employees);
+        res.status(200).send(employees);
     } catch (error) {
         res.status(500).send("Error finding employees: " );
     }
